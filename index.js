@@ -10,10 +10,10 @@ function memoize(fn) {
   return (...args) => {
     const key = [...args].join('+');
     if (cache.hasOwnProperty(key)) {
-      console.log('cached', key);
+      //console.log('cached', key);
       return cache[key];
     } else {
-      console.log('computed', key);
+      //console.log('computed', key);
       cache[key] = fn(...args);
       return cache[key];
     }
@@ -40,8 +40,29 @@ function fibonacci(n) {
   }
 }
 
+//console.log(fibonacci);
+
+let computedStart = performance.now();
+console.log(fibonacci(10));
+console.log(fibonacci(15));
+let computedEnd  = performance.now();
+
+let computedTime = computedEnd - computedStart;
+console.log('computed',computedTime ,'ms');
+
+
 var fibonacci = memoize(fibonacci);
 
-console.log(fibonacci(5));
+//console.log(fibonacci);
+
+let cachedStart  = performance.now();
 console.log(fibonacci(10));
-console.log(fibonacci(5));
+console.log(fibonacci(15));
+let  cachedEnd  = performance.now();
+
+let cachedTime = cachedEnd - cachedStart;
+console.log('cached',cachedTime ,'ms');
+
+let cachedPerf = 100 - (cachedTime / computedTime * 100);
+
+console.log(Math.floor(cachedPerf), '%  decrease by Memoization');
