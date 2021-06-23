@@ -26,9 +26,9 @@ function sum(a, b) {
 
 var sum = memoize(sum);
 
-console.log(sum(2, 3));
+/*console.log(sum(2, 3));
 console.log(sum(4, 5));
-console.log(sum(2, 3));
+console.log(sum(2, 3));*/
 
 function fibonacci(n) {
   if (n === 0) {
@@ -43,12 +43,12 @@ function fibonacci(n) {
 //console.log(fibonacci);
 
 let computedStart = performance.now();
-console.log(fibonacci(10));
-console.log(fibonacci(15));
+console.log('Computed - fibonacci 10 = ', fibonacci(10));
+console.log('Computed - fibonacci 15 = ', fibonacci(15));
 let computedEnd  = performance.now();
 
 let computedTime = computedEnd - computedStart;
-console.log('computed',computedTime ,'ms');
+console.log('Computed Time ',computedTime ,'ms');
 
 
 var fibonacci = memoize(fibonacci);
@@ -56,12 +56,12 @@ var fibonacci = memoize(fibonacci);
 //console.log(fibonacci);
 
 let cachedStart  = performance.now();
-console.log(fibonacci(10));
-console.log(fibonacci(15));
+console.log('Memoized - fibonacci 10 = ', fibonacci(10));
+console.log('Memoized - fibonacci 15 = ', fibonacci(15));
 let  cachedEnd  = performance.now();
 
 let cachedTime = cachedEnd - cachedStart;
-console.log('cached',cachedTime ,'ms');
+console.log('Cached Time ',cachedTime ,'ms');
 
 let cachedPerf = 100 - (cachedTime / computedTime * 100);
 
