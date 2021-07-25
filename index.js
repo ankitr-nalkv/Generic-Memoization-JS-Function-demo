@@ -3,8 +3,13 @@ import './style.css';
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
+appDiv.innerHTML = `<h1>JS Memoization</h1>`;
 
+/**
+ * Generic Memoization function
+ * @param pure function
+ * @return decorated Memorized function
+ */
 function memoize(fn) {
   let cache = {};
   return (...args) => {
